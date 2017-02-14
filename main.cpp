@@ -1,7 +1,6 @@
 #include <iostream>
 
-#include <"main.h">
-#include <"matrix.h">
+#include "main.h"
 
 using namespace std;
 
@@ -18,7 +17,7 @@ int main()
     cin >> m;
     
     board = new Matrix(n,m);
-
+/*
     while (true){
 
         c=getch();
@@ -28,5 +27,5 @@ int main()
 
 	board.step();
     }
-
+*/
 }

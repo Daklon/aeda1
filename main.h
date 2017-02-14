@@ -1,3 +1,4 @@
-#include <"matrix.h">
+#include "matrix.h"
 
-Matrix board;
+
+Matrix *board;
