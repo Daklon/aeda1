@@ -2,6 +2,8 @@
 #define MATRIX_H
 
 
+#include <vector>
+
 #include "cell.h"
 
 
@@ -19,6 +21,6 @@ class Matrix {
     private:
         int N;
         int M; 
-        Cell *board;
+	std::vector< std::vector<Cell> > board;
 };
 #endif

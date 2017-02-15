@@ -41,9 +41,9 @@ bool Cell::isAlive()
 	    xNeighbour = xPosition - j;
 	    yNeighbour = yPosition - i;
 	    //de esto se puede encargar el metodo get cell
-	    if ( xNeighbour >= 0 || xNeighbour < parentMatrix.getN() ) {
-                if ( yNeighbour >= 0 || yNeighbour < parentMatrix.getM() ) {
-                    if ( parentMatrix.getCell(xNeighbour, yNeighbour).getstate() ) {
+	    if ( xNeighbour >= 0 || xNeighbour < parentMatrix->getN() ) {
+                if ( yNeighbour >= 0 || yNeighbour < parentMatrix->getM() ) {
+                    if ( parentMatrix->getCell(xNeighbour, yNeighbour)->getstate() ) {
                         aliveCellQuantity =+ 1;
 		    }
 		}
@@ -60,5 +60,5 @@ bool Cell::isAlive()
     }
   
     //esto hay que revisarlo
-    parentMatrix.updateCell(xPosition -1, yPosition -1).setUpdated();
+    parentMatrix->updateCell(xPosition -1, yPosition -1).setUpdated();
 }

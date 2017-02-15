@@ -17,15 +17,15 @@ int main()
     cin >> m;
     
     board = new Matrix(n,m);
-/*
+
     while (true){
 
-        c=getch();
+        c=getchar();
 	if (c == 27){
 	    break;
 	}
 
-	board.step();
+	board->step();
     }
-*/
+
 }

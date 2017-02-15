@@ -12,13 +12,14 @@ Matrix::Matrix(int n, int m)
     N = n;
     M = m;
 
-    for (i=0; i <= n; i++) {
-        for (j = 0; j <= m; j++) {
+    board.resize(N);
+    
+    for (i=0; i<N; i++) {
 
-	    board[i][j] = new Cell (i, j, this);
+        board[i].resize(M);
 
-	}
-    }
+    } 
+
 
 }
 
@@ -44,7 +45,7 @@ int Matrix::getM()
 }
 
 
-Cell Matrix::getCell(int x, int y)
+Cell* Matrix::getCell(int x, int y)
 {
 
     if ( x >= 0 || x < N) {
@@ -53,19 +54,19 @@ Cell Matrix::getCell(int x, int y)
 	}
     }
 
-    return NULL;
+    return nullptr;
 
 }
 
 void Matrix::updateCell(int x, int y)
 {
 
-    Cell cell;
+    Cell *cell;
 
     cell = this->getCell(x,y);
 
-    if ( cell != NULL) {
-        cell.setUpdated();
+    if ( cell != nullptr) {
+        cell->setUpdated();
     }
 
 }
