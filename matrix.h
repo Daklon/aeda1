@@ -14,13 +14,13 @@ class Matrix {
 	Matrix(int n, int m);
         ~Matrix();
         void step();
-	Cell getCell(int x, int y);
+	Cell *getCell(int x, int y);
 	int getN();
 	int getM();
 	void updateCell(int x, int y);
     private:
         int N;
         int M; 
-	std::vector< std::vector<Cell> > board;
+	std::vector< std::vector<Cell *> > board;
 };
 #endif

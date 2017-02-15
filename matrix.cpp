@@ -9,15 +9,16 @@ Matrix::Matrix(int n, int m)
     int i;
     int j;
 
+
     N = n;
     M = m;
 
     board.resize(N);
-    
+
     for (i=0; i<N; i++) {
-
-        board[i].resize(M);
-
+        for (j=0; j<M; j++) {
+		board[i].push_back(new Cell(i, j, this));
+	}
     } 
 
 
@@ -48,8 +49,8 @@ int Matrix::getM()
 Cell* Matrix::getCell(int x, int y)
 {
 
-    if ( x >= 0 || x < N) {
-        if ( y >= 0 || y < M) {
+    if ( x >= 0 && x < N) {
+        if ( y >= 0 && y < M) {
 	    return board[x][y];
 	}
     }
