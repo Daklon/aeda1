@@ -6,6 +6,7 @@
 
 #include "cell.h"
 
+class Cell;
 
 class Matrix {
 

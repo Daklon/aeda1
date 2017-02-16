@@ -26,7 +26,7 @@ void Cell::setUpdated()
 
 
 //this must check the 8 most nearby cells to set alive state of ifself
-bool Cell::isAlive()
+void Cell::isAlive()
 {
     int i;
     int j;
@@ -44,14 +44,14 @@ bool Cell::isAlive()
 	    if ( xNeighbour >= 0 || xNeighbour < parentMatrix->getN() ) {
                 if ( yNeighbour >= 0 || yNeighbour < parentMatrix->getM() ) {
                     if ( Cell *cell = parentMatrix->getCell(xNeighbour, yNeighbour) ) {
-                        aliveCellQuantity =+ 1;
+                        aliveCellQuantity++;
 		    }
 		}
 	    }
 	}
     }
 
-    if ( lastState && (2 <= aliveCellQuantity <= 3 )) {
+    if ( lastState && ((2 <= aliveCellQuantity) || (aliveCellQuantity <= 3 ))) {
         currentState = true;
     } else if ( !lastState && ( aliveCellQuantity == 3)) {
         currentState = true;

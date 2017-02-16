@@ -14,7 +14,7 @@ class Cell{
 	int yPosition;
 	//revisar puntero
 	Matrix *parentMatrix;
-        bool isAlive();
+        void isAlive();
     public:
         Cell(int x, int y,Matrix *matrix);
         ~Cell();	
