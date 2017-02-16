@@ -1,49 +1,52 @@
 #include "cell.h"
 
-Cell::Cell(int x, int y, Matrix *matrix)
+Cell::Cell()
 {
-    //esto hay que revisarlo, los punteros
-    parentMatrix = matrix;
-    xPosition = x;
-    yPosition = y;
-    lastState = false;
-    currentState = false;
+	this->lastState = false;
+    this->currentState = false;
 }
 
 
 bool Cell::getState()
 {
-    return lastState;
+    return this->lastState;
 }
 
+void Cell::setState(bool state)
+{
+	this->lastState = state;
+	this->currentState = state;
+
+}
 
 //this must be called at leats one time per turn, but only when
 //all nearby cells has called isAlive()
 void Cell::setUpdated()
 {
-    lastState = currentState;
+    this->lastState = this->currentState;
 }
 
 
 //this must check the 8 most nearby cells to set alive state of ifself
-void Cell::isAlive()
+void Cell::isAlive(int x, int y, Matrix *matrix)
 {
     int i;
     int j;
-    int xNeighbour;
+	int xNeighbour;
     int yNeighbour;
     int aliveCellQuantity;
+
 
     aliveCellQuantity = 0;
 
     for (i = -1; i<2; i++) {
         for (j = -1; j<2; j++) {
-	    xNeighbour = xPosition - j;
-	    yNeighbour = yPosition - i;
+	    xNeighbour = x - j;
+	    yNeighbour = y - i;
 	    //de esto se puede encargar el metodo get cell
-	    if ( xNeighbour >= 0 || xNeighbour < parentMatrix->getN() ) {
-                if ( yNeighbour >= 0 || yNeighbour < parentMatrix->getM() ) {
-                    if ( Cell *cell = parentMatrix->getCell(xNeighbour, yNeighbour) ) {
+	    if ( xNeighbour >= 0 || xNeighbour < matrix->getN() ) {
+                if ( yNeighbour >= 0 || yNeighbour < matrix->getM() ) {
+                    if ( Cell *cell = matrix->getCell(xNeighbour, yNeighbour) ) {
                         aliveCellQuantity++;
 		    }
 		}
@@ -51,14 +54,24 @@ void Cell::isAlive()
 	}
     }
 
-    if ( lastState && ((2 <= aliveCellQuantity) || (aliveCellQuantity <= 3 ))) {
+    if ( this->lastState && ((2 <= aliveCellQuantity) || (aliveCellQuantity <= 3 ))) {
         currentState = true;
-    } else if ( !lastState && ( aliveCellQuantity == 3)) {
+    } else if ( !this->lastState && ( aliveCellQuantity == 3)) {
         currentState = true;
     } else {
         currentState = false;
     }
   
     //esto hay que revisarlo
-    parentMatrix->updateCell(xPosition -1, yPosition -1);
+	if ((matrix->getN() == x) && (matrix->getM() == y)) {
+		for (i = -1; i<1; i++) {
+			for (j = -1; j<1; j++) {
+				xNeighbour = x - j;
+				yNeighbour = y - i;
+				matrix->updateCell(xNeighbour, yNeighbour);
+			}
+		}
+	} else {
+		matrix->updateCell(x -1, y -1);
+	}
 }

@@ -10,15 +10,12 @@ class Cell{
     private:
         bool lastState;
         bool currentState;
-	int xPosition;
-	int yPosition;
-	//revisar puntero
-	Matrix *parentMatrix;
-        void isAlive();
+        void isAlive(int x, int y,Matrix *matrix);
     public:
-        Cell(int x, int y,Matrix *matrix);
+        Cell();
         ~Cell();	
 	bool getState();
+	void setState(bool state);
 	void setUpdated();
 };
 #endif
