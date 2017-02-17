@@ -28,9 +28,16 @@ Matrix::Matrix(int n, int m)
 void Matrix::step()
 {
     int i;
-	for (i=0; i<N ;i++){
-	
+	int j;
+	for (i=0; i<N; i++) {
+		for(j=0; j<M; j++) {
+			board[i][j]->isAlive(i, j, this);
+		}
 	}
+}
+
+void Matrix::initializeCell(bool state)
+{
 
 }
 
