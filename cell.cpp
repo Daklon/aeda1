@@ -65,16 +65,18 @@ bool Cell::isAlive(int x, int y, Matrix *matrix)
     }
   
     //esto hay que revisarlo
-	if ((matrix->getN() == x) && (matrix->getM() == y)) {
-		for (i = -1; i<1; i++) {
-			for (j = -1; j<1; j++) {
-				xNeighbour = x - j;
-				yNeighbour = y - i;
-				matrix->updateCell(xNeighbour, yNeighbour);
-			}
-		}
-	} else {
-		matrix->updateCell(x -1, y -1);
+	
+	matrix->updateCell(x-1, y-1);
+	
+	if ((matrix->getN() == x)) {
+		matrix->updateCell(x, y-1);
+	}	
+	if ((matrix->getM() == y)) {
+		matrix->updateCell(x-1, y);
 	}
+	if ((matrix->getM() == y) &&(matrix->getN() == x)) {
+		this->setUpdated();
+	}
+	
 	return currentState;
 }
