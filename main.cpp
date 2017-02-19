@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #include "main.h"
 
@@ -35,11 +37,14 @@ int main()
 
     while (true){
 
+	/*
        c = getchar(); 
 	if (c == 's'){
 	    break;
 	}
-
+	*/
+	std::this_thread::sleep_for(std::chrono::milliseconds(600)); 
+	cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	board->step();
     }
 
