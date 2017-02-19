@@ -10,10 +10,10 @@ class Cell{
     private:
         bool lastState;
         bool currentState;
-        void isAlive(int x, int y,Matrix *matrix);
     public:
         Cell();
         ~Cell();	
+    void isAlive(int x, int y,Matrix *matrix);
 	bool getState();
 	void setState(bool state);
 	void setUpdated();

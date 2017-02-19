@@ -30,28 +30,30 @@ void Cell::setUpdated()
 //this must check the 8 most nearby cells to set alive state of ifself
 void Cell::isAlive(int x, int y, Matrix *matrix)
 {
-    int i;
-    int j;
-	int xNeighbour;
-    int yNeighbour;
-    int aliveCellQuantity;
+    signed int i;
+    signed int j;
+	signed int xNeighbour;
+    signed int yNeighbour;
+    signed int aliveCellQuantity;
 
 
     aliveCellQuantity = 0;
 
     for (i = -1; i<2; i++) {
         for (j = -1; j<2; j++) {
-	    xNeighbour = x - j;
-	    yNeighbour = y - i;
-	    //de esto se puede encargar el metodo get cell
-	    if ( xNeighbour >= 0 || xNeighbour < matrix->getN() ) {
-                if ( yNeighbour >= 0 || yNeighbour < matrix->getM() ) {
-                    if ( Cell *cell = matrix->getCell(xNeighbour, yNeighbour) ) {
-                        aliveCellQuantity++;
-		    }
-		}
-	    }
-	}
+			if ((j != 0) || (i != 0)) {
+				xNeighbour = x + j;
+				yNeighbour = y + i;
+				//de esto se puede encargar el metodo get cell
+				if ( xNeighbour >= 0 && xNeighbour < matrix->getN() ) {
+						if ( yNeighbour >= 0 && yNeighbour < matrix->getM() ) {
+							if ( matrix->getCell(xNeighbour, yNeighbour)->getState() ) {
+								aliveCellQuantity++;
+							}
+						}
+				}
+	        }
+    	}
     }
 
     if ( this->lastState && ((2 <= aliveCellQuantity) || (aliveCellQuantity <= 3 ))) {

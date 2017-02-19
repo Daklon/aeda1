@@ -16,7 +16,6 @@ Matrix::Matrix(int n, int m)
     board.resize(N);
 
     for (i=0; i<N; i++) {
-		board[i].resize(M);
         for (j=0; j<M; j++) {
 		    board[i].push_back(new Cell());
 	    }
@@ -35,12 +34,12 @@ void Matrix::step()
 		}
 	}
 }
-
+/*
 void Matrix::initializeCell(bool state)
 {
 
 }
-
+*/
 
 int Matrix::getN()
 {
