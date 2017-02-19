@@ -3,6 +3,7 @@
 
 
 #include <vector>
+#include <iostream>
 
 #include "cell.h"
 
@@ -20,6 +21,7 @@ class Matrix {
 	int getM();
 	void updateCell(int x, int y);
     private:
+	    void draw(bool state, int i);
         int N;
         int M; 
 	std::vector< std::vector<Cell *> > board;

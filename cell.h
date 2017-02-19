@@ -13,7 +13,7 @@ class Cell{
     public:
         Cell();
         ~Cell();	
-    void isAlive(int x, int y,Matrix *matrix);
+    bool isAlive(int x, int y,Matrix *matrix);
 	bool getState();
 	void setState(bool state);
 	void setUpdated();

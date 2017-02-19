@@ -25,9 +25,8 @@ int main()
 	for (i=0; i<m; i++) {
 		for (j=0; j<n; j++) {
 			cout << "\nMust the cell in the coordinates x=" << j << " y="	<<	i << " be alive? press Y to set alive, enter to set dead"; 	
-			c=getchar();
+			cin >> c;
 			if (c == 'y') {
-				//esto falla
 				board->getCell(j,i)->setState(true);
 			}
 		}
@@ -36,8 +35,8 @@ int main()
 
     while (true){
 
-        c=getchar();
-	if (c == 27){
+       c = getchar(); 
+	if (c == 's'){
 	    break;
 	}
 

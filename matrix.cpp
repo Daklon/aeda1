@@ -28,10 +28,26 @@ void Matrix::step()
 {
     int i;
 	int j;
-	for (i=0; i<N; i++) {
-		for(j=0; j<M; j++) {
-			board[i][j]->isAlive(i, j, this);
+	for (i=0; i<M; i++) {
+		for(j=0; j<N; j++) {
+			if( board[i][j]->isAlive(j, i, this)) {
+				this->draw(true, j);
+			} else {
+				this->draw(false, j);
+			}
 		}
+	}
+}
+
+void Matrix::draw(bool state, int i)
+{
+	if (state){
+		cout << "|X";
+	} else {
+		cout << "| ";
+	}
+	if ( i == (N-1)) {
+		cout << "|\n";
 	}
 }
 /*
