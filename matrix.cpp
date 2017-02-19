@@ -30,7 +30,7 @@ void Matrix::step()
 	int j;
 	for (i=0; i<M; i++) {
 		for(j=0; j<N; j++) {
-			if( board[i][j]->isAlive(j, i, this)) {
+			if( board[j][i]->isAlive(j, i, this)) {
 				this->draw(true, j);
 			} else {
 				this->draw(false, j);
